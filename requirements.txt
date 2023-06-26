@@ -1,8 +1,8 @@
 langchain
 openai
-# tiktoken
+tiktoken
 streamlit
 streamlit-chat
 cohere
 pinecone-client
-# pinecone-text
+pinecone-text

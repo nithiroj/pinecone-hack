@@ -2,9 +2,6 @@
 import streamlit as st
 from streamlit_chat import message
 
-from langchain.chains import ConversationChain
-from langchain.llms import OpenAI
-
 from langchain.embeddings import CohereEmbeddings
 from langchain.vectorstores import Pinecone
 
@@ -14,33 +11,27 @@ from langchain.chains import RetrievalQA
 from langchain.agents import Tool
 from langchain.agents import initialize_agent
 
-import os
-from dotenv import load_dotenv
-
 import pinecone
-
-# loads environment variables
-load_dotenv()
 
 # Cohere embeddings
 # small - 1024 dim
 embeddings = CohereEmbeddings(model='small',
-                              cohere_api_key=os.environ['COHERE_API_KEY'])
+                              cohere_api_key=st.secrets['COHERE_API_KEY'])
 
 # Pinecone Vectorstore
 pinecone.init(
-    api_key=os.environ['PINECONE_API_KEY'],
-    environment=os.environ['PINECONE_ENVIRONMENT']
+    api_key=st.secrets['PINECONE_API_KEY'],
+    environment=st.secrets['PINECONE_ENVIRONMENT']
 )
 
-index_name = os.environ['PINECONE_INDEX']
+index_name = st.secrets['PINECONE_INDEX']
 
 vectorstore = Pinecone.from_existing_index(index_name, embeddings)
 
 
 def load_agent():
     llm = ChatOpenAI(
-        openai_api_key=os.environ['OPENAI_API_KEY'],
+        openai_api_key=st.secrets['OPENAI_API_KEY'],
         model_name='gpt-3.5-turbo',
         temperature=0.0,
     )

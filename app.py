@@ -89,7 +89,7 @@ agent = load_agent()
 # From here down is all the StreamLit UI.
 st.set_page_config(page_title="BKK Airbnb Demo", page_icon=":robot:")
 st.header("BKK Airbnb Demo")
-st.text("I'm here to help you find an Airbnb room in Bangkok!")
+st.text("I'm here to help you find an Airbnb room in Bangkok! What is your preferences?")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []

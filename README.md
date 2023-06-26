@@ -1,4 +1,4 @@
-# NKK Airbnb AI Chatbot
+# BKK Airbnb AI Chatbot
 
 [Pinecone Hackathon 2023](https://pinecone-hackathon.devpost.com/)
 

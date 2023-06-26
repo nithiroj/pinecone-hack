@@ -1,4 +1,4 @@
-langchain
+langchain==0.0.199
 openai
 tiktoken
 streamlit

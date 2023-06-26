@@ -89,6 +89,7 @@ agent = load_agent()
 # From here down is all the StreamLit UI.
 st.set_page_config(page_title="BKK Airbnb Demo", page_icon=":robot:")
 st.header("BKK Airbnb Demo")
+st.text("I'm here to help you find an Airbnb room in Bangkok!")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
@@ -99,7 +100,7 @@ if "past" not in st.session_state:
 
 def get_text():
     input_text = st.text_input(
-        "You: ", "Hello, How are you?", key="input")
+        "You: ", key="input")
     print(input_text)
     return input_text
 
@@ -107,7 +108,6 @@ def get_text():
 user_input = get_text()
 
 if user_input:
-    # output = chain.run(input=user_input)
     output = agent.run(user_input)
     print(output)
 
